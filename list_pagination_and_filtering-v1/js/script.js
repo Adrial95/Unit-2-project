@@ -26,34 +26,33 @@ function showPage (list, page) {
    studentList.innerHTML = "";
 
    for(let i = 0; i < list.Lenght; i=+1) {
-    if (i >= indexStart && i <= endIndex ) {
-
+    if (i >= startIndex && i <= endIndex ) {
+     let studentItem =   
+     ` </div>
+     <ul class="student-list">
+       <li class="student-item cf">
+           <div class="student-details">
+               <img class="avatar" src="https://randomuser.me/api/portraits/thumb/women/67.jpg">
+               <h3>iboya vat</h3>
+               <span class="email">iboya.vat@example.com</span>
+           </div>
+           <div class="joined-details">
+                  <span class="date">Joined 07/15/15</span>
+          </div>
+       </li>`;
+     studentList.insertAdjecentHTML("beforeend", studentItem);
     }
    }
+   return list;
 }
-/*** 
-   Create the `showPage` function to hide all of the items in the 
-   list except for the ten you want to show.
-
-   Pro Tips: 
-     - Keep in mind that with a list of 54 students, the last page 
-       will only display four.
-     - Remember that the first student has an index of 0.
-     - Remember that a function `parameter` goes in the parens when 
-       you initially define the function, and it acts as a variable 
-       or a placeholder to represent the actual function `argument` 
-       that will be passed into the parens later when you call or 
-       "invoke" the function 
-***/
-
-
-
 
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
-
+function appendPageLinks() {
+   
+}
 
 
 
