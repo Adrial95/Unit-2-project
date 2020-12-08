@@ -51,7 +51,13 @@ function showPage (list, page) {
    functionality to the pagination buttons.
 ***/
 function appendPageLinks() {
-   
+   let numOfPages = math.ceil(list.lenght/9);
+   const linkList = document.querySelector(".link-list");
+   linkList.innerHTML = "";
+
+   for(var i = 0; i <=numOfPages; i =+ 1) {
+   let button
+   }
 }
 
 
