@@ -20,26 +20,33 @@ FSJS project 2 - List Filter and Pagination
 
 
 function showPage (list, page) {
-   var startIndex = (page*9) - 9;
-   var endIndex = (page*9);
+   var startIndex = (page * 9) - 9;
+   var endIndex = (page *9 );
    const studentList = documetn.querySelector(".student-list");
    studentList.innerHTML = "";
 
    for(let i = 0; i < list.Lenght; i=+1) {
     if (i >= startIndex && i <= endIndex ) {
      let studentItem =   
-     ` </div>
-     <ul class="student-list">
-       <li class="student-item cf">
-           <div class="student-details">
-               <img class="avatar" src="https://randomuser.me/api/portraits/thumb/women/67.jpg">
-               <h3>iboya vat</h3>
-               <span class="email">iboya.vat@example.com</span>
-           </div>
-           <div class="joined-details">
-                  <span class="date">Joined 07/15/15</span>
-          </div>
-       </li>`;
+     `div class="pagination">
+     <ul>
+       <li>
+         <a class="active" href="#">1</a>
+       </li>
+        <li>
+         <a href="#">2</a>
+       </li>
+        <li>
+         <a href="#">3</a>
+       </li>
+        <li>
+         <a href="#">4</a>
+       </li>
+        <li>
+         <a href="#">5</a>
+       </li>
+     </ul>
+   </div>`;
      studentList.insertAdjecentHTML("beforeend", studentItem);
     }
    }
@@ -50,15 +57,35 @@ function showPage (list, page) {
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
-function appendPageLinks() {
+function appendPageLinks(list) {
    let numOfPages = math.ceil(list.lenght/9);
    const linkList = document.querySelector(".link-list");
    linkList.innerHTML = "";
 
-   for(var i = 0; i <=numOfPages; i =+ 1) {
-   let button
+   for(var i = 1; i <=numOfPages; i =+ 1) {
+   let button =
+   `<li>
+   <button type="button">${[i]}</button>
+</li>`;
+linkList.insertAdjacentHTML("beforeend",  button);
+const firstButton = document.querySelector("button");
+firstButton.classname("active"); 
+
+linkList.addEventListener('click', (e) =>{
+ if (e.target.tagName === "BUTTON") {
+    var activeButton = document.querySelector(".active");
+    activeButton.className = "";
+    const inactiveButton = e.target;
+    inactiveButton.className  = "active";
+    showPage(data, e.target.texContent);
+
    }
+  })
+ }
 }
+
+showPage(data, 1);
+addPagination(data);
 
 
 
