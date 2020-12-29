@@ -16,12 +16,13 @@ FSJS project 2 - List Filter and Pagination
    will only be used inside of a function, then it can be locally 
    scoped to that function.
 ***/
-
+const studentList = document.querySelector('.student-list');
+const linkList = document.querySelector('.link-list');
 
 
 function showPage (list, page) {
-   var startIndex = (page * 9) - 9;
-   var endIndex = (page *9 );
+   const startIndex = (page * 9) - 9;
+   const endIndex = page *9 ;
    const studentList = document.querySelector(".student-list");
    studentList.innerHTML = "";
 
@@ -49,35 +50,33 @@ function showPage (list, page) {
    functionality to the pagination buttons.
 ***/
 function addPagination(list) {
-   let numOfPages = Math.ceil(list.lenght/9);
-   const linkList = document.querySelector(".link-list");
-   linkList.innerHTML = "";
+   const numOfPages = Math.ceil(list.length/9);
+   let activeButton = document.querySelector('.link-list');
+   activeButton.innerHTML = "";
 
-   for(var i = 1; i <= numOfPages; i =+ 1) {
-   let button =
+   for(let i = 0; i < numOfPages; i ++) {
+      activeButton.insertAdjacentHTML("beforeend",  button); 
+      var activeButton =
    `<li>
    <button type="button">${[i]}</button>
    </li>`;
-   linkList.insertAdjacentHTML("beforeend",  button);
+   }
    const firstButton = document.querySelector("button");
    firstButton.classname("active"); 
-   }
-   linkList.addEventListener("click", (e) => {
-   if (e.target.tagName === "BUTTON") {
-    const activeButton = document.querySelector(".active");
-    activeButton.className = "";
-    const inactiveButton = e.target;
-    inactiveButton.className  = "active";
-    showPage(data, e.target.texContent);
+   
+   activeButton.addEventListener('click', e => {
+   
+      if (e.target.tagName == "BUTTON") {
+    activeButton.querySelector(".active");
+    e.target.className  = 'active';
+    showPage(list, e.target.texContent);
 
    }
   });
 };
-
+ // here i am calling my
 showPage(data, 1);
 addPagination(data);
-
-
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
